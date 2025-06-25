@@ -14,5 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "ini route uatma";
+    //return view('welcome');
+});
+
+Route::get('/products', function () {
+    return "ini route products";
+    //return view('welcome');
+});
+
+Route::get('/cart', function () {
+    return "ini route cart";
+    //return view('welcome');
+});
+
+Route::get('/checkout', function () {
+    return "ini route checkout";
+    //return view('welcome');
 });
