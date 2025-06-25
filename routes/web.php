@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,13 @@ Route::get('/', function () {
     //return view('welcome');
 });
 
+Route::resource('/products', ProductController::class);
+/*
 Route::get('/products', function () {
     return "ini route products";
     //return view('welcome');
 });
-
+*/
 Route::get('/cart', function () {
     return "ini route cart";
     //return view('welcome');
