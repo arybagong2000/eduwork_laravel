@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +15,22 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return "ini route uatma";
-    //return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index']);
 
 Route::resource('/products', ProductController::class);
+
+Route::resource('/carts', CartController::class);
 /*
 Route::get('/products', function () {
     return "ini route products";
     //return view('welcome');
 });
-*/
+
 Route::get('/cart', function () {
     return "ini route cart";
     //return view('welcome');
 });
-
+*/
 Route::get('/checkout', function () {
     return "ini route checkout";
     //return view('welcome');
