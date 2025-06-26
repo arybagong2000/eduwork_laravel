@@ -13,6 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('carts.index') ? 'active' : '' }}" href="{{ route('carts.index') }}">Keranjang</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('barang.index') ? 'active' : '' }}" href="{{ route('barang.index') }}">Barang</a>
+            </li>
             </ul>
             <ul class="navbar-nav navbar-admin">
             <li class="nav-item">

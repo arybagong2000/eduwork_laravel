@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\BarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('/', [ProductController::class, 'index']);
 Route::resource('/products', ProductController::class);
 
 Route::resource('/carts', CartController::class);
+Route::resource('/barang', BarangController::class);
 /*
 Route::get('/products', function () {
     return "ini route products";
