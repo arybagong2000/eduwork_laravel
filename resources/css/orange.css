@@ -1,0 +1,21 @@
+/** Custom CSS for orange theme **/
+
+.text-orange {
+    color: #ff6600 !important;
+}
+.bg-orange, .btn-orange {
+    background-color: #ff6600 !important;
+    color: #fff !important;
+    border: none;
+}
+.btn-orange:hover {
+    background-color: #ff8800 !important;
+    color: #fff !important;
+}
+.table-orange th{
+    background-color: #ff6600 !important;
+    color: #fff !important;
+}
+.badge.bg-orange {
+    background-color: #ff6600 !important;
+}

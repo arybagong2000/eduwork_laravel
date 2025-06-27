@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKatagoriController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +31,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+/*
+Route::name('admin.')->group(function () {
+    Route::resource('/admin/barang', BarangController::class);
+    //Route::resource('/admin/katagori', BarangKatagoriController::class);
+});
+*/
+Route::get('/katagori', function () {return view('katagori');})->name('katagori');
+Route::get('/barang', function () {return view('barangAdmin');})->name('barang');
+Route::resource('/products', ProductController::class);
+Route::resource('/carts', CartController::class);
 
 require __DIR__.'/auth.php';
