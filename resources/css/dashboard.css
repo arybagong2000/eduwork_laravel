@@ -1,0 +1,28 @@
+.dashboard-card {
+    border-radius: 10px;
+    min-height: 180px; /* Adjust as needed for your content */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-blue {
+    background-color: #e3f0fa;
+}
+
+.card-green {
+    background-color: #e3fae5;
+}
+
+.card-yellow {
+    background-color: #faf7e3;
+}
+
+.card .card-body {
+    flex: 1 1 auto;
+}
+
+@media (max-width: 767.98px) {
+    .dashboard-card {
+        margin-bottom: 1rem;
+    }
+}
