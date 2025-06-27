@@ -14,8 +14,12 @@
             </div>
         </div>
     </div>
+@include('barang.modal')
 
 @section('cssstyle')
     @vite('resources/css/orange.css')
 @endsection('cssstyle')
+@section('jsscript')
+    @include('barang.jsscript')
+@endsection('jsscript')
 </x-app-layout>

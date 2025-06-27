@@ -14,8 +14,12 @@
             </div>
         </div>
     </div>
+@include('katagori.modal')
 
 @section('cssstyle')
     @vite('resources/css/orange.css')
 @endsection('cssstyle')
+@section('jsscript')
+    @include('katagori.jsscript')
+@endsection('jsscript')
 </x-app-layout>
