@@ -19,3 +19,34 @@
 .badge.bg-orange {
     background-color: #ff6600 !important;
 }
+/* Nuansa orange untuk pagination Bootstrap */
+
+.pagination .page-link {
+    color: #ff6600;
+    background-color: #fff;
+    border: 1px solid #ff6600;
+    transition: background 0.2s, color 0.2s;
+}
+
+.pagination .page-link:hover,
+.pagination .page-link:focus {
+    color: #fff;
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+
+.pagination .page-item.active .page-link {
+    color: #fff;
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ffa366;
+    background-color: #fff7f0;
+    border-color: #ffb380;
+}
+
+.pagination {
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
+}

@@ -9,8 +9,8 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barang = Barang::paginate(8);
-        return view('barang',compact('barang'));
+        $barang = Barang::paginate(5);
+        return view('barangAdmin',compact('barang'));
         //return Barang::with('katagori')->get();
     }
 

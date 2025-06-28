@@ -26,7 +26,7 @@ function renderTable() {
         `;
     });
 }
-renderTable();
+//renderTable();
 
 const kategoriModal = new bootstrap.Modal(document.getElementById('kategoriModal'));
 const hapusModal = new bootstrap.Modal(document.getElementById('hapusModal'));

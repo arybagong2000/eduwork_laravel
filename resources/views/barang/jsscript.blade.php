@@ -35,7 +35,7 @@ function renderTable() {
         `;
     });
 }
-renderTable();
+//renderTable();
 
 const barangModal = new bootstrap.Modal(document.getElementById('barangModal'));
 const hapusModal = new bootstrap.Modal(document.getElementById('hapusModal'));

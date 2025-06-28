@@ -9,7 +9,9 @@ class BarangKatagoriController extends Controller
 {
     public function index()
     {
-        return BarangKatagori::all();
+        $katagori = BarangKatagori::paginate(3);
+        return view('katagori',compact('katagori'));
+        //return BarangKatagori::all();
     }
 
     public function store(Request $request)

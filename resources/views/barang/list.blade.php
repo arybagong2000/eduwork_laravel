@@ -12,7 +12,22 @@
             </tr>
         </thead>
         <tbody id="barang-tbody">
-            <!-- Data diisi oleh JavaScript -->
+            @foreach( $barang as $v)
+            <tr>
+                <td>{{$v->id}}</td>
+                <td>{{ $v->nama}}</td>
+                <td>
+                    <img src="{{ $v->gambar}}" alt="{{ $v->nama}}" class="img-thumb" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'">
+                </td>
+                <td>{{ $v->deskripsi || ''}}</td>
+                <td>{{ $v->stock}}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning text-white" onclick="openModal('edit', {{$v->id}})"> <i class="bi bi-pencil-square"></i> Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="openHapusModal({{$v->id}})"><i class="bi bi-trash"></i>  Hapus</button>
+                </td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
+    {{ $barang->links() }}
 </div>
