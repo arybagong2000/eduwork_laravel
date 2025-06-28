@@ -31,13 +31,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::middleware(['adminku'])->group(function () {
+    Route::get('/katagori', function () {return view('katagori');})->name('katagori');
+});
 /*
 Route::name('admin.')->group(function () {
     Route::resource('/admin/barang', BarangController::class);
     //Route::resource('/admin/katagori', BarangKatagoriController::class);
 });
 */
-Route::get('/katagori', function () {return view('katagori');})->name('katagori');
+//Route::get('/katagori', function () {return view('katagori');})->name('katagori');
 Route::get('/barang', function () {return view('barangAdmin');})->name('barang');
 Route::resource('/products', ProductController::class);
 Route::resource('/carts', CartController::class);
