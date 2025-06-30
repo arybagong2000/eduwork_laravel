@@ -12,10 +12,10 @@
         </thead>
         <tbody id="kategori-tbody">
             @foreach( $katagori as $v)
-            <tr>
+            <tr id="row-{{$v->id}}">
                 <td>{{$v->id}}</td>
                 <td>{{ $v->nama}}</td>
-                <td>{{ $v->keterangan || ''}}</td>
+                <td>{{ $v->keterangan }}</td>
                 <td><span class="badge bg-orange">{{ $v->status}}</span></td>
                 <td>
                     <button class="btn btn-sm btn-warning text-white" onclick="openModal('edit', {{$v->id}})">

@@ -2,6 +2,8 @@
 <div class="modal fade" id="kategoriModal" tabindex="-1" aria-labelledby="kategoriModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <form id="kategoriForm" novalidate>
+        @csrf
+        <input type="hidden" id="_method" name="_method" value="POST">
       <div class="modal-content">
         <div class="modal-header bg-orange text-white">
           <h5 class="modal-title" id="kategoriModalLabel">Tambah Kategori</h5>

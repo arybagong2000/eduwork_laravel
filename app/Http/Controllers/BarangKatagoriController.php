@@ -9,7 +9,7 @@ class BarangKatagoriController extends Controller
 {
     public function index()
     {
-        $katagori = BarangKatagori::paginate(3);
+        $katagori = BarangKatagori::paginate(5);
         return view('katagori',compact('katagori'));
         //return BarangKatagori::all();
     }
@@ -17,7 +17,7 @@ class BarangKatagoriController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|string|max:255|unique:barang_katagori,nama',
             'keterangan' => 'nullable|string',
             'status' => 'required|string',
         ]);
@@ -36,12 +36,12 @@ class BarangKatagoriController extends Controller
     {
         $katagori = BarangKatagori::findOrFail($id);
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|string|max:255|unique:barang_katagori,nama,' . $id,
             'keterangan' => 'nullable|string',
             'status' => 'required|string',
         ]);
         $katagori->update($validated);
-        return response()->json($katagori);
+        return response()->json($katagori,201);
     }
 
     public function destroy($id)

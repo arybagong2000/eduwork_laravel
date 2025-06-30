@@ -1,4 +1,5 @@
 <script>
+/*
 let kategoriData = [
     { nama: "Elektronik", keterangan: "Barang elektronik", status: "aktif" },
     { nama: "Makanan", keterangan: "Kategori makanan & minuman", status: "aktif" }
@@ -27,7 +28,7 @@ function renderTable() {
     });
 }
 //renderTable();
-
+*/
 const kategoriModal = new bootstrap.Modal(document.getElementById('kategoriModal'));
 const hapusModal = new bootstrap.Modal(document.getElementById('hapusModal'));
 let hapusIndex = null;
@@ -40,15 +41,112 @@ function openModal(mode, index = null) {
     if (mode === 'add') {
         document.getElementById('kategoriModalLabel').textContent = 'Tambah Kategori';
     } else if (mode === 'edit' && index !== null) {
+        const row = document.getElementById('row-'+index);
+        const cells = row.getElementsByTagName('td');
+        
         document.getElementById('kategoriModalLabel').textContent = 'Edit Kategori';
         document.getElementById('editIndex').value = index;
-        document.getElementById('nama').value = kategoriData[index].nama;
-        document.getElementById('keterangan').value = kategoriData[index].keterangan;
-        document.getElementById('status').value = kategoriData[index].status;
+        document.getElementById('nama').value = cells[1].innerText;
+        document.getElementById('keterangan').value = cells[2].innerText;
+        document.getElementById('status').value = cells[3].innerText;
+        document.getElementById('_method').value = 'PUT';
     }
     kategoriModal.show();
 }
 
+// Modal Hapus
+function openHapusModal(idx) {
+    const row = document.getElementById('row-'+idx);
+    const cells = row.getElementsByTagName('td');
+    hapusIndex = idx;
+    document.getElementById('hapusNama').textContent = cells[1].innerText;
+    hapusModal.show();
+}
+
+function showNotif(type, message) {
+    // type: 'success', 'error', 'info', 'warning'
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: type,
+        title: message,
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true
+    });
+}
+
+// ADD Kategori
+function addCategory(data) {
+    $.ajax({
+        url: "{{route('katagori.index')}}", // Ganti sesuai endpoint kamu
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            showNotif('success', 'Kategori berhasil ditambahkan!');
+            $('#kategoriModal').modal('hide');
+        },
+        error: function(xhr) {
+            let msg = "Gagal menambah kategori. ";
+            if (xhr.responseJSON && xhr.responseJSON.message) msg = msg + xhr.responseJSON.message;
+            showNotif('error', msg);
+        }
+    });
+}
+
+// EDIT Kategori
+function editCategory(id, data) {
+    $.ajax({
+        url: "{{route('katagori.index')}}/"+id,
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            showNotif('success', 'Kategori berhasil diupdate!');
+            $('#kategoriModal').modal('hide');
+        },
+        error: function(xhr) {
+            let msg = "Gagal mengupdate kategori.";
+            if (xhr.responseJSON && xhr.responseJSON.message) msg = msg + xhr.responseJSON.message;
+            console.log(msg);
+            showNotif('error', msg);
+        }
+    });
+}
+
+// HAPUS Kategori (dengan konfirmasi SweetAlert2)
+function deleteCategory(id) {
+    Swal.fire({
+        title: 'Yakin hapus kategori ini?',
+        text: "Aksi ini tidak bisa dibatalkan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "{{route('katagori.index')}}/" + id,
+                type: 'DELETE',
+                dataType: 'json',
+                success: function(response) {
+                    showNotif('success', 'Kategori berhasil dihapus!');
+                    //if (typeof renderKategoriTable === 'function') renderKategoriTable();
+                    document.getElementById('row-'+id).remove();
+                    $('#hapusModal').modal('hide');
+                },
+                error: function(xhr) {
+                    let msg = "Gagal menghapus kategori.";
+                    if (xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON.message;
+                    showNotif('error', msg);
+                }
+            });
+        }
+    });
+}
 document.getElementById('kategoriForm').addEventListener('submit', function(e) {
     e.preventDefault();
     let isValid = true;
@@ -75,28 +173,23 @@ document.getElementById('kategoriForm').addEventListener('submit', function(e) {
     const data = {
         nama: nama.value.trim(),
         keterangan: keterangan.value.trim(),
-        status: status.value
+        status: status.value,
+        _method :_method.value
     };
     if (idx === "") {
-        kategoriData.push(data);
+        addCategory(data);
     } else {
-        kategoriData[idx] = data;
+        editCategory(idx,data);
     }
-    kategoriModal.hide();
-    renderTable();
+    kategoriModal.hide(idx,data);
+    //renderTable();
 });
 
-// Modal Hapus
-function openHapusModal(idx) {
-    hapusIndex = idx;
-    document.getElementById('hapusNama').textContent = kategoriData[idx].nama;
-    hapusModal.show();
-}
+
 document.getElementById('btnHapusKategori').onclick = function() {
     if (hapusIndex !== null) {
-        kategoriData.splice(hapusIndex, 1);
-        renderTable();
-        hapusModal.hide();
+        deleteCategory(hapusIndex);
     }
 };
+
 </script>

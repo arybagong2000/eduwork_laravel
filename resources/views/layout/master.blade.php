@@ -15,12 +15,13 @@
   </style>
 </head>
 <body>  
-    <x-navigation></x-navigation>
+    <x-navigation />
     <h2 class="mb-4 fw-bold text-center" style="color:#ff8400">@yield('title')</h2>
     <div class="container py-5">
+        <x-notification />
         @yield('content')
     </div>
-    <x-footer></x-footer>
+    <x-footer />
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

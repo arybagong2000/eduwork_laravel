@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <button class="btn btn-orange mb-3" onclick="openModal('add')"><i class="bi bi-plus"></i> Tambah Data</button>
+    <a href="{{route('barang.create')}}" class="btn btn-orange mb-3"><i class="bi bi-plus"></i> Tambah Data</a>
     <table class="table table-bordered">
         <thead class="table-orange text-white">
             <tr>
