@@ -19,7 +19,4 @@
 @section('cssstyle')
     @vite('resources/css/orange.css')
 @endsection('cssstyle')
-@section('jsscript')
-   
-@endsection('jsscript')
 </x-app-layout>

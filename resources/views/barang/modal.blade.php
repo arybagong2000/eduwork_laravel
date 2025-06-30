@@ -50,8 +50,12 @@
             Apakah Anda yakin ingin menghapus barang <strong id="hapusNama"></strong>?
         </div>
         <div class="modal-footer">
+        <form id="form-delete" action="" method="POST">
+            @csrf
+            @method('DELETE')
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             <button type="button" class="btn btn-danger" id="btnHapus">Hapus</button>
+        </form>
         </div>
     </div>
   </div>

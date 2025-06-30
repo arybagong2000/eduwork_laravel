@@ -22,7 +22,7 @@
                 <td>{{ $v->deskripsi || ''}}</td>
                 <td>{{ $v->stock}}</td>
                 <td>
-                    <button class="btn btn-sm btn-warning text-white" onclick="openModal('edit', {{$v->id}})"> <i class="bi bi-pencil-square"></i> Edit</button>
+                    <a href="{{route('barang.edit',$v->id)}}" class="btn btn-sm btn-warning text-white"> <i class="bi bi-pencil-square"></i> Edit</a>
                     <button class="btn btn-sm btn-danger" onclick="openHapusModal({{$v->id}})"><i class="bi bi-trash"></i>  Hapus</button>
                 </td>
             </tr>

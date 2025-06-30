@@ -118,13 +118,15 @@ document.getElementById('barangForm').addEventListener('submit', function(e) {
 // Hapus barang
 function openHapusModal(idx) {
     hapusIndex = idx;
-    document.getElementById('hapusNama').textContent = barangData[idx].nama;
+    //document.getElementById('hapusNama').textContent = barangData[idx].nama;
     hapusModal.show();
 }
 document.getElementById('btnHapus').onclick = function() {
     if (hapusIndex !== null) {
-        barangData.splice(hapusIndex, 1);
-        renderTable();
+        alert('huhhuy');
+        var form = document.getElementById('form-delete');
+        form.action = "{{ url('barang') }}/" + hapusIndex;
+        form.submit();
         hapusModal.hide();
     }
 };
