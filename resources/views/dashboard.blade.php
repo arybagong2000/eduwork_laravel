@@ -16,7 +16,7 @@
                             <div class="card dashboard-card card-blue shadow-sm h-100">
                                 <div class="card-header fw-bold bg-transparent">Jumlah Produk</div>
                                 <div class="card-body">
-                                    <div class="fw-bold display-6 mb-1">150</div>
+                                    <div class="fw-bold display-6 mb-1">{{ $jml_barang }}</div>
                                     <span class="text-secondary">Total produk yang tersedia di sistem.</span>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@
                             <div class="card dashboard-card card-green shadow-sm h-100">
                                 <div class="card-header fw-bold bg-transparent">Jumlah Klik Produk</div>
                                 <div class="card-body">
-                                    <div class="fw-bold display-6 mb-1">12,340</div>
+                                    <div class="fw-bold display-6 mb-1">{{ number_format($jml_klick, 0, ',', '.')  }}</div>
                                     <span class="text-secondary">Total klik pada produk yang telah dilihat pengguna.</span>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="card dashboard-card card-yellow shadow-sm h-100">
                                 <div class="card-header fw-bold bg-transparent">Jumlah Kategori Produk</div>
                                 <div class="card-body">
-                                    <div class="fw-bold display-6 mb-1">10</div>
+                                    <div class="fw-bold display-6 mb-1">{{ $jml_katagori }}</div>
                                     <span class="text-secondary">Total kategori produk yang tersedia di sistem.</span>
                                 </div>
                             </div>

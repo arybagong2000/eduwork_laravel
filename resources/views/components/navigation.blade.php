@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-white mb-4">
         <div class="container">
         <a class="navbar-brand fw-bold" href="{{ url('/') }}" style="color:#ff8400">TOKO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -22,7 +22,16 @@
                 <a class="nav-link" href="#">Admin</a>
             </li>
             </ul>
-        </div>
+        </div -->
+        <!-- Navigation Links -->
+        <div class="">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                        {{ __('Barang') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('carts.index')" :active="request()->routeIs('carts.index')">
+                        {{ __('Katagori') }}
+                    </x-nav-link>
+                </div>
         </div>
     </nav>
 </div>
